@@ -1,0 +1,255 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@400;900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Playfair Display SC', serif;
+    background: #D5F5E3;
+}
+
+
+/* Header */
+
+.menu_input:checked+.nav_menu {
+    background: rgb(136, 136, 136);
+}
+
+.menu {
+    background: #fff;
+    height: 80px;
+    color: black;
+}
+
+.menu_container {
+    display: flex;
+    height: 100%;
+    width: 90%;
+    margin: 0 auto;
+    /* Centrar contenido */
+    justify-content: space-between;
+    /* Elementos a las esquinas */
+    align-items: center;
+    /* Centrar verticalmente */
+}
+
+.menu_logo {
+    font-size: 1.5em;
+    font-weight: 900;
+}
+
+.menu_label,
+.menu_input {
+    display: none;
+}
+
+.nav_menu {
+    display: grid;
+    grid-auto-flow: column;
+    /* Uno al lado del otro */
+    gap: 3em;
+    /* Espaciador */
+}
+
+.menu_item {
+    color: black;
+    text-decoration: none;
+    --clippy: polygon(0 0, 0 0, 0 100%, 0% 100%);
+}
+
+.menu_item::after {
+    content: "";
+    display: block;
+    background: black;
+    width: 90%;
+    margin-top: 3px;
+    height: 3px;
+    clip-path: var(--clippy);
+    transition: clip-path .3s;
+}
+
+.menu_item:hover {
+    --clippy: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    color: hotpink;
+}
+
+
+/* *************************** */
+
+
+/* Carrusel  */
+
+.carousel-inner .carousel-item img {
+    width: auto !important;
+    height: auto !important;
+    margin: 0 auto;
+    /* Con esto modificamos el tamaño del carrusel */
+}
+
+
+/* Caja de promociones */
+
+.promocion {
+    width: 70%;
+    background-color: #c2e8ee;
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+.promocion .promocion1 {
+    width: 70%;
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 50px;
+    padding: 50px 0px;
+}
+
+.promocion .promocion1 .cajaPromocion h2 {
+    color: black;
+    margin-bottom: 25px;
+    font-size: 40px;
+}
+
+.promocion .promocion1 .cajaPromocion figure {
+    width: 70%;
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.promocion .promocion1 .cajaPromocion figure img {
+    width: 250px;
+    margin-top: 30px;
+}
+
+
+/* *************************** */
+
+
+/* Footer */
+
+.pie-pagina {
+    width: 100%;
+    background-color: white;
+    color: black;
+}
+
+.pie-pagina .grupo1 {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 50px;
+    padding: 45px 0px;
+}
+
+.pie-pagina .grupo1 .box figure {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pie-pagina .grupo1 .box figure img {
+    width: 150px;
+}
+
+.pie-pagina .grupo1 .box h2 {
+    color: black;
+    margin-bottom: 25px;
+    font-size: 25px;
+}
+
+.pie-pagina .grupo1 .box p {
+    color: rgba(0, 0, 0, 0.781);
+    margin-bottom: 10px;
+}
+
+.pie-pagina .grupo1 .red-social a {
+    display: inline-block;
+    text-decoration: none;
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    /* para que quede centrado */
+    color: black;
+    margin-right: 10px;
+    background-color: whitesmoke;
+    text-align: center;
+    transition: all 300ms ease;
+}
+
+.pie-pagina .grupo1 .red-social a:hover {
+    color: grey;
+}
+
+.pie-pagina .grupo2 {
+    background-color: rgba(128, 128, 128, 0.479);
+    padding: 15px 10px;
+    text-align: center;
+    color: black;
+}
+
+.pie-pagina .grupo2 small {
+    font-size: 15px;
+}
+
+
+/* ********************************* */
+
+@media (max-width: 700px) {
+    /* Header */
+    .menu_label {
+        display: block;
+        /* Que se muestre el icono */
+        cursor: pointer;
+        /* Aparece el cursor cuando pasamos el mouse sobre el elemento */
+    }
+    .nav_menu {
+        position: fixed;
+        top: 80px;
+        bottom: 0;
+        background: rgb(136, 136, 136);
+        width: 100%;
+        left: 0;
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: column;
+        align-items: center;
+        clip-path: circle(0 at center);
+        transition: clip-path 1s ease-in-out;
+        z-index: 2;
+        /* El menu queda por arriba del carrusel */
+    }
+    .menu_input:checked+.nav_menu {
+        clip-path: circle(100% at center);
+    }
+    .menu_item:hover {
+        --clippy: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        color: white;
+    }
+    /* ********** */
+    /* Footer */
+    .pie-pagina .grupo1 {
+        width: 90%;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 30px;
+        padding: 35px 0px;
+    }
+    /* *********** */
+    /* Caja de promociones */
+    .promocion .promocion1 {
+        width: 50%;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 30px;
+        padding: 30px 0px;
+    }
+    /* ********** */
+}
